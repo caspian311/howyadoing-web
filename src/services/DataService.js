@@ -3,7 +3,7 @@ class DataService {
         return new Promise((resolve, reject) => {
             const data = [
                 {
-                  name: '4/26', weight: 239.8, goal: 200
+                    name: '4/26', weight: 239.8, goal: 200
                 }, {
                     name: '4/27', weight: 238.9, goal: 200
                 }, {
