@@ -36,8 +36,8 @@ class AddMetric extends Component {
             <h2 className="secondary-background">Add a new metric</h2>
 
             <form onSubmit={this.onSubmit}>
-                <input type="number" name="value" className="foo" />
-                <input type="submit" value="Add" className="bar" />
+                <input type="number" name="value" />
+                <input type="submit" value="Add" className="terciary-background" />
             </form>
 
             <p>

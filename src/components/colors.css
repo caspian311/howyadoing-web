@@ -8,7 +8,12 @@
     background-color: #8bc0d1;
     color: #000;
   }
-  
+
+  .terciary-background {
+    background-color: #758e74;
+    color: #fff;
+  }
+
 .link-color {
     color: #254a62;
 }
