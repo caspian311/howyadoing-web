@@ -12,3 +12,7 @@
 .Metric a {
     float: right;
 }
+
+.Metric p {
+    margin: 10px;
+}

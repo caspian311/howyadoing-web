@@ -21,6 +21,13 @@ class DataService {
             resolve(data)
         })
     }
+
+    addValue(newValue) {
+        return new Promise((resolve, reject) => {
+            console.log("adding: ", newValue)
+            resolve({});
+        })
+    }
 }
 
 export default DataService;

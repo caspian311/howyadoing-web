@@ -8,9 +8,13 @@ import './colors.css';
 
 class Metric extends Component {
     render() {
-        return (<div class="Metric">
-            <h2 class="secondary-background">Weight Loss</h2>
-            <Link to="/AddMetric" className="link link-color">Record Today's Weight >></Link>
+        return (<div className="Metric">
+            <h2 className="secondary-background">Weight Loss</h2>
+            
+            <p>
+                <Link to="/AddMetric" className="link link-color">Record Today's Weight >></Link>
+            </p>
+            
             <Graph />
         </div>);
     }

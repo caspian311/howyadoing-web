@@ -9,8 +9,34 @@
     margin-top: 0;
 }
 
+.AddMetric form {
+    padding: 10px;    
+    text-align: center;
+}
+
+.AddMetric input {
+    border: solid 1px #000;
+    padding: 2px;
+}
+
+.AddMetric input[type=number] {
+    width: 100px;
+    height: 42px;
+    font-size: 15pt;
+    margin-right: 10px;
+}
+
+.AddMetric input[type=submit] {
+    width: 100px;
+    font-size: 15pt;
+    height: 50px;
+    border-radius: 5px;
+}
+
 .AddMetric a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #254a62;
+    display: block;
+}
+
+.AddMetric p {
+    padding: 10px;
 }

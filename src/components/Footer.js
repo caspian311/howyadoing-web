@@ -5,8 +5,8 @@ import './colors.css';
 
 class Footer extends Component {
     render() {
-        return (<div class="Footer secondary-background">
-            <span class="copy">You got this!</span>
+        return (<div className="Footer secondary-background">
+            <span className="copy">You got this!</span>
         </div>);
     }
 }
