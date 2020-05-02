@@ -1,0 +1,9 @@
+.Header {
+    margin-bottom: 0;
+}
+
+.Header h1 {
+    color: #fff;
+    margin: 0;
+    padding: 10px;
+}

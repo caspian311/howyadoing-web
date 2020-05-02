@@ -1,6 +1,8 @@
 .App {
-  text-align: center;
   width: 100%;
+  background: #fff;
 }
 
-
+body {
+  margin: 0;
+}

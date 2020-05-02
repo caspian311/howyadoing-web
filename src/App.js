@@ -1,13 +1,16 @@
 import React from 'react';
 import './App.css';
-import Graph from './components/Graph.js';
+import './components/colors.css';
+import Header from './components/Header.js';
+import Metric from './components/Metric.js';
+import Footer from './components/Footer.js';
 
 function App() {
   return (
     <div className="App">
-      <h1>How ya doing?</h1>
-
-      <Graph />
+      <Header />
+      <Metric />
+      <Footer />
     </div>
   );
 }
