@@ -9,3 +9,10 @@
     margin-top: 0;
     
 }
+
+.Metric a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #254a62;
+    float: right;
+}

@@ -1,6 +1,7 @@
 .Footer {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 12px;
+    padding: 5px;
 }
 
 .Footer .copy {
