@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 import Graph from './Graph.js';
 
@@ -9,7 +10,7 @@ class Metric extends Component {
     render() {
         return (<div class="Metric">
             <h2 class="secondary-background">Weight Loss</h2>
-            <a href="">Record Today's Weight >></a>
+            <Link to="/AddMetric" className="link link-color">Record Today's Weight >></Link>
             <Graph />
         </div>);
     }
