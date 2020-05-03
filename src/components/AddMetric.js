@@ -11,20 +11,30 @@ class AddMetric extends Component {
         super(props);
     
         this.state = {
-          submitted: false
+          submitted: false,
+          newValue: undefined,
+          isReadyToSubmit: false
         };
       }
 
     onSubmit = (event) => {
         event.preventDefault();
-        new DataService().addValue(123)
+        new DataService().addValue(this.state.newValue)
             .then(() => {
-                console.log('setting submitted to true')
                 this.setState(() => ({ submitted: true }));
             })
             .catch((e) => {
-                console.log('something went wrong',e )
+                console.log('something went wrong', e)
             })
+    }
+
+    onValueChanged = (event) => {
+        let newValue = parseInt(event.target.value);
+        
+        this.setState(() => ({ 
+            newValue: newValue,
+            isReadyToSubmit: !isNaN(newValue)
+         }));
     }
 
     render() {
@@ -36,8 +46,8 @@ class AddMetric extends Component {
             <h2 className="secondary-background">Add a new metric</h2>
 
             <form onSubmit={this.onSubmit}>
-                <input type="number" name="value" />
-                <input type="submit" value="Add" className="terciary-background" />
+                <input type="number" name="value" onChange={this.onValueChanged} />
+                <input type="submit" value="Add" className="terciary-background" disabled={this.state.isReadyToSubmit ? '' : 'disabled'} />
             </form>
 
             <p>
