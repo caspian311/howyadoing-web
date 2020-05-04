@@ -11,13 +11,15 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "recharts": "^1.8.5"
+    "recharts": "^1.8.5",
+    "s3-deploy": "^1.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "./node_modules/.bin/s3-deploy './build/**' --cwd './build/' --deleteRemoved --bucket howyadoing.coffeemonkey.net"
   },
   "eslintConfig": {
     "extends": "react-app"
