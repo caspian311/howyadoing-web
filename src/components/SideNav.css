@@ -1,0 +1,22 @@
+.side-nav {
+    background: #003d99;
+    color: #fff;
+    width: 90%;
+    position: fixed;
+    right: -90%;
+    transition: 0.5s;
+    font-size: 18pt;
+    height: 100%;
+    z-index: 100;
+  }
+  
+  .side-nav.show {
+    -webkit-transform: translate(-90%, 0);
+    transform: translate(-90%, 0);
+  }
+  
+  .side-nav li {
+    list-style-type: none;
+    padding-bottom: 10px;
+  }
+  
