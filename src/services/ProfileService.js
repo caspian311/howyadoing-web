@@ -12,7 +12,9 @@ class ProfileService {
     updateProfile(profile) {
         return new Promise((resolve, reject) => {
             console.log("updating: ", profile);
-            resolve(profile);
+            setTimeout(() => {
+                resolve(profile);
+            }, 1000)
         })
     }
 }

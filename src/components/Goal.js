@@ -31,7 +31,10 @@ class Goal extends Component {
             })
     }
 
-    onSubmit = () => {
+    onSubmit = (e) => {
+        e.preventDefault()
+        this.setState((state) => ({ ...state, isReadyToSubmit: false }))
+
         new ProfileService().updateProfile()
             .then(() => {
                 this.setState(() => ({ submitted: true }))
