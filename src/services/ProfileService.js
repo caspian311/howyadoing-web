@@ -1,12 +1,14 @@
+import axios from 'axios'
+
+import config from './config'
+
+
 class ProfileService {
     fetchProfile() {
-        return new Promise((resolve, reject) => {
-            resolve({
-                name: 'Matt Todd',
-                email: 'matt.c.todd@gmail.com', 
-                goal: 200
-            });
-        })
+        const url = `${config.baseUrl}/api/profile`;
+
+        return axios.get(url)
+            .then((data) => ( data.data ))
     }
 
     updateProfile(profile) {
