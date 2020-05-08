@@ -39,7 +39,7 @@ class AddMetric extends Component {
 
     render() {
         if (this.state.submitted === true) {
-        return <Redirect to='/dashboard' />
+        return <Redirect to='/' />
         }
 
         return (<div className="AddMetric">
