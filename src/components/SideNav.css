@@ -1,6 +1,4 @@
 .side-nav {
-    background: #003d99;
-    color: #fff;
     width: 90%;
     position: fixed;
     right: -90%;
@@ -20,3 +18,6 @@
     padding-bottom: 10px;
   }
   
+  .side-nav a {
+    color: #fff;
+  }

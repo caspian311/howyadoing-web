@@ -4,6 +4,7 @@ import './components/colors.css';
 import Header from './components/Header.js';
 import SideNav from './components/SideNav.js';
 import Metric from './components/Metric.js';
+import Goal from './components/Goal.js';
 import AddMetric from './components/AddMetric.js';
 import Footer from './components/Footer.js';
 
@@ -33,11 +34,14 @@ class App extends Component {
   render() {
     return (<div className="App">
       <Header isOpen={this.state.isOpen} toggleMenu={this.toggleMenu} />
-      <SideNav isOpen={this.state.isOpen} />
       <Router>
+        <SideNav isOpen={this.state.isOpen} toggleMenu={this.toggleMenu} />
         <Switch>
           <Route path="/AddMetric">
             <AddMetric />
+          </Route>
+          <Route path="/Goal">
+            <Goal />
           </Route>
           <Route path="/">
             <Metric />
