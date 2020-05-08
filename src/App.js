@@ -4,7 +4,7 @@ import './components/colors.css';
 import Header from './components/Header.js';
 import SideNav from './components/SideNav.js';
 import Metric from './components/Metric.js';
-import Goal from './components/Goal.js';
+import Profile from './components/Profile.js';
 import AddMetric from './components/AddMetric.js';
 import Footer from './components/Footer.js';
 
@@ -40,8 +40,8 @@ class App extends Component {
           <Route path="/AddMetric">
             <AddMetric />
           </Route>
-          <Route path="/Goal">
-            <Goal />
+          <Route path="/Profile">
+            <Profile />
           </Route>
           <Route path="/">
             <Metric />

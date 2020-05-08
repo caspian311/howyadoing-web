@@ -13,7 +13,7 @@ class SideNav extends Component {
         return <div className={ this.sideNavClasses() }>
             <ul>
                 <li>
-                    <Link className="link link-color" to="/goal" onClick={this.props.toggleMenu} >Goal</Link>
+                    <Link className="link link-color" to="/Profile" onClick={this.props.toggleMenu} >Profile</Link>
                 </li>
                 <li>
                     <Link className="link link-color" to="/" onClick={this.props.toggleMenu}>Metrics</Link>

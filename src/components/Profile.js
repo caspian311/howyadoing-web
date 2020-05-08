@@ -3,10 +3,10 @@ import { Redirect, Link } from "react-router-dom";
 
 import ProfileService from '../services/ProfileService';
 
-import "./Goal.css";
+import "./Profile.css";
 import './colors.css';
 
-class Goal extends Component {
+class Profile extends Component {
     constructor(props) {
         super(props);
     
@@ -77,7 +77,7 @@ class Goal extends Component {
             return <Redirect to='/' />
         }
 
-        return (<div className="Goal">
+        return (<div className="Profile">
             <h2 className="secondary-background">Goals</h2>
             
             <form onSubmit={this.onSubmit}>
@@ -86,7 +86,7 @@ class Goal extends Component {
                     <input id="name" type="text" name="name" onChange={this.onNameChanged} value={this.state.name} />
                     <label htmlFor="email">Email</label>
                     <input id="email" type="text" name="email" onChange={this.onEmailChanged} value={this.state.email} />
-                    <label htmlFor="goal">Goal</label>
+                    <label htmlFor="goal">Profile</label>
                     <input id="goal" type="number" name="goal" onChange={this.onGoalChanged} value={this.state.goal} />
                     <input type="submit" value="Update" className="terciary-background" disabled={this.state.isReadyToSubmit ? '' : 'disabled'} />
                 </fieldset>
@@ -99,5 +99,4 @@ class Goal extends Component {
     }
 }
 
-export default Goal;
-    
+export default Profile;
