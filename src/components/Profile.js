@@ -11,8 +11,11 @@ class Profile extends Component {
         super(props);
     
         this.state = {
-          submitted: false,
-          isReadyToSubmit: false
+            name: '',
+            email: '',
+            goal: '',
+            submitted: false,
+            isReadyToSubmit: false
         };
       }
 
