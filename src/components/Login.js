@@ -6,9 +6,32 @@ import './colors.css';
 import Header from './Header';
 import Footer from './Footer';
 
+import SessionService from '../services/SessionService';
+
 class Login extends Component {
-    doLogin = () => {
-      this.props.setLoggedInUser({ id: 123 })
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            email: '',
+            password: '',
+            error: null
+        };
+      }
+
+    doLogin = (e) => {
+        e.preventDefault()
+
+        new SessionService().createSession(this.state.email, this.state.password)
+            .then((userSession) => {
+                this.props.setLoggedInUser(userSession)
+            })
+            .catch((err) => {
+                this.setState((oldState) => ({
+                    ...oldState,
+                    error: err.message
+                }))
+            })
     }
   
     render() {
@@ -16,12 +39,14 @@ class Login extends Component {
             <Header />
             <h2 className="secondary-background">Login</h2>
             
+            { this.state.error ? <ErrorMessage message={this.state.error} /> : '' }
+            
             <form>
                 <fieldset>
-                    <label for="email">Email</label>
+                    <label htmlFor="email">Email</label>
                     <input type="text" id="email" name="email" />
 
-                    <label for="password">Password</label>
+                    <label htmlFor="password">Password</label>
                     <input type="password" id="password" name="password" />
                 </fieldset>
 
@@ -33,6 +58,14 @@ class Login extends Component {
     }
   }
   
+  function ErrorMessage(props) {
+      return (
+            <div className="error">
+                <span>Error:</span>
+                {props.message}
+            </div>
+      );
+  }
   
   export default Login;
   
