@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 
-import '../App.css';
+import './Login.css';
 import './colors.css';
+
+import Header from './Header';
+import Footer from './Footer';
 
 class Login extends Component {
     doLogin = () => {
@@ -9,10 +12,23 @@ class Login extends Component {
     }
   
     render() {
-      return (<div>
-          Login page
-  
-          <button onClick={this.doLogin}>Login</button>
+      return (<div className="Login">
+            <Header />
+            <h2 className="secondary-background">Login</h2>
+            
+            <form>
+                <fieldset>
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" />
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" />
+                </fieldset>
+
+                <input type="submit" className="terciary-background" onClick={this.doLogin} value="Login" />
+            </form>
+                        
+            <Footer />
         </div>);
     }
   }

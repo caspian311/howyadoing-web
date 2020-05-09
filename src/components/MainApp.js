@@ -33,7 +33,7 @@ class MainApp extends Component {
   
     render() {
       return (<div className="App">
-          <Header isOpen={this.state.isOpen} toggleMenu={this.toggleMenu} />
+          <Header isOpen={this.state.isOpen} toggleMenu={this.toggleMenu} showMenu={true}/>
           <Router>
             <SideNav isOpen={this.state.isOpen} toggleMenu={this.toggleMenu} setLoggedInUser={this.props.setLoggedInUser} />
             <Switch>
