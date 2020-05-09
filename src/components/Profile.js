@@ -38,7 +38,11 @@ class Profile extends Component {
         e.preventDefault()
         this.setState((state) => ({ ...state, isReadyToSubmit: false }))
 
-        new ProfileService().updateProfile()
+        new ProfileService().updateProfile({
+                name: this.state.name, 
+                email: this.state.email, 
+                goal: this.state.goal
+            })
             .then(() => {
                 this.setState(() => ({ submitted: true }))
             })
