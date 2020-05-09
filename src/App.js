@@ -1,56 +1,30 @@
 import React, { Component } from 'react';
-import './App.css';
-import './components/colors.css';
-import Header from './components/Header.js';
-import SideNav from './components/SideNav.js';
-import Metric from './components/Metric.js';
-import Profile from './components/Profile.js';
-import AddMetric from './components/AddMetric.js';
-import Footer from './components/Footer.js';
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import MainApp from './components/MainApp.js';
+import Login from './components/Login.js';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-        isOpen: false
+        loggedInUser: null
     };
   }
-
-  toggleMenu = () => {
-    let previousState = this.state.isOpen;
-
-    this.setState(() => {
-        return { isOpen: !previousState }
-    })
+  
+  setLoggedInUser = (user) => {
+    this.setState((oldState) => ({
+        ...oldState,
+        loggedInUser: user
+    }))
   }
 
   render() {
-    return (<div className="App">
-      <Header isOpen={this.state.isOpen} toggleMenu={this.toggleMenu} />
-      <Router>
-        <SideNav isOpen={this.state.isOpen} toggleMenu={this.toggleMenu} />
-        <Switch>
-          <Route path="/AddMetric">
-            <AddMetric />
-          </Route>
-          <Route path="/Profile">
-            <Profile />
-          </Route>
-          <Route path="/">
-            <Metric />
-          </Route>
-        </Switch>
-      </Router>
-      
-      <Footer />
-    </div>);
+    if (!this.state.loggedInUser) {
+      return <Login setLoggedInUser={this.setLoggedInUser} />;
+    } 
+
+    return <MainApp setLoggedInUser={this.setLoggedInUser} />
   }
 }
 

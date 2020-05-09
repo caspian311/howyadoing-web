@@ -9,6 +9,11 @@ class SideNav extends Component {
         return this.props.isOpen ? 'side-nav terciary-background show' : 'side-nav terciary-background'
     }
 
+    logout = (e) => {
+        e.preventDefault()
+        this.props.setLoggedInUser(null)
+    }
+
     render() {
         return <div className={ this.sideNavClasses() }>
             <ul>
@@ -17,6 +22,9 @@ class SideNav extends Component {
                 </li>
                 <li>
                     <Link className="link link-color" to="/" onClick={this.props.toggleMenu}>Metrics</Link>
+                </li>
+                <li>
+                    <a className="link link-color" href="/logout" onClick={this.logout}>Logout</a>
                 </li>
             </ul>
         </div>
