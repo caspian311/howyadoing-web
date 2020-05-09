@@ -29,9 +29,26 @@ class Login extends Component {
             .catch((err) => {
                 this.setState((oldState) => ({
                     ...oldState,
-                    error: err.message
+                    error: err.response.data.message
                 }))
             })
+    }
+
+    updateField = (field, value) => {
+        let newState = this.state
+        newState[field] =  value
+        
+        this.setState(() => ({ 
+            ...newState, 
+        }))
+    }
+
+    onEmailChanged = (e) => {
+        this.updateField('email', e.target.value)
+    }
+
+    onPasswordChanged = (e) => {
+        this.updateField('password', e.target.value)
     }
   
     render() {
@@ -44,10 +61,10 @@ class Login extends Component {
             <form>
                 <fieldset>
                     <label htmlFor="email">Email</label>
-                    <input type="text" id="email" name="email" />
+                    <input type="text" id="email" name="email" onChange={this.onEmailChanged} value={this.state.email} />
 
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" />
+                    <input type="password" id="password" name="password" onChange={this.onPasswordChanged} value={this.state.password} />
                 </fieldset>
 
                 <input type="submit" className="terciary-background" onClick={this.doLogin} value="Login" />
