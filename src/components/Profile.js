@@ -19,42 +19,40 @@ class Profile extends Component {
         };
       }
 
-    componentDidMount() {
-        new ProfileService().fetchProfile()
-            .then((data) => {
-                this.setState((state) => ({
-                    ...state,
-                    name: data.name,
-                    email: data.email,
-                    goal: data.goal
-                }))
-            })
-            .catch((e) => {
-                console.log("Error: ", e)
-            })
+    async componentDidMount() {
+        try {
+            let data = await new ProfileService().fetchProfile()
+            this.setState((state) => ({
+                ...state,
+                name: data.name,
+                email: data.email,
+                goal: data.goal
+            }))
+        } catch(e) {
+            console.log("Error: ", e)
+        }
     }
 
-    onSubmit = (e) => {
+    onSubmit = async (e) => {
         e.preventDefault()
         this.setState((state) => ({ ...state, isReadyToSubmit: false }))
 
-        new ProfileService().updateProfile({
+        try {
+            await new ProfileService().updateProfile({
                 name: this.state.name, 
                 email: this.state.email, 
                 goal: this.state.goal
             })
-            .then(() => {
-                this.setState(() => ({ submitted: true }))
-            })
-            .catch((e) => {
-                console.log("Error: ", e)
-            })
+        this.setState(() => ({ submitted: true }))
+        } catch(e) {
+            console.log("Error: ", e)
+        }
     }
 
     validate = (newState) => {
         return newState.name.length > 0 &&
-        newState.email.length > 0 &&
-        newState.goal > 0;;
+            newState.email.length > 0 &&
+            newState.goal > 0;;
     }
 
     updateField = (field, value) => {

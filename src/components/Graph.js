@@ -12,13 +12,9 @@ class Graph extends Component {
         };
       }
     
-    componentDidMount() {
-        new DataService().fetchData(this.props.token)
-            .then((data) => {
-                this.setState({
-                    data
-                })
-            })
+    async componentDidMount() {
+        let data = await new DataService().fetchData(this.props.token)
+        this.setState(() => ({ data }))
     }
 
     render() {
