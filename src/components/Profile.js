@@ -43,7 +43,7 @@ class Profile extends Component {
                 email: this.state.email, 
                 goal: this.state.goal
             })
-        this.setState(() => ({ submitted: true }))
+            this.setState(() => ({ submitted: true }))
         } catch(e) {
             console.log("Error: ", e)
         }

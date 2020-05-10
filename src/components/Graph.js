@@ -1,27 +1,14 @@
 import React, { Component } from 'react';
-import './Graph.css';
 import {ResponsiveContainer, LineChart, Legend, YAxis, XAxis, Tooltip, CartesianGrid, Line} from 'recharts';
-import DataService from '../services/DataService'
+
+import './Graph.css';
 
 class Graph extends Component {
-    constructor(props) {
-        super(props);
-    
-        this.state = {
-          data: []
-        };
-      }
-    
-    async componentDidMount() {
-        let data = await new DataService().fetchData(this.props.token)
-        this.setState(() => ({ data }))
-    }
-
     render() {
         return (      
             <ResponsiveContainer width="100%" aspect={4.0/3.0}>
                 <LineChart
-                    data={this.state.data}
+                    data={this.props.data}
                     margin={{
                         top: 10, right: 10, left: 10, bottom: 10,
                     }}
