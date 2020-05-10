@@ -44,7 +44,7 @@ class MainApp extends Component {
                 <Profile user={this.props.loggedInUser} />
               </Route>
               <Route path="/">
-                <Metric user={this.props.loggedInUser} />
+                <Metric token={this.props.token} />
               </Route>
             </Switch>
           </Router>

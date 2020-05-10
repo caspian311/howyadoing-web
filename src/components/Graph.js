@@ -13,7 +13,7 @@ class Graph extends Component {
       }
     
     componentDidMount() {
-        new DataService().fetchData()
+        new DataService().fetchData(this.props.token)
             .then((data) => {
                 this.setState({
                     data

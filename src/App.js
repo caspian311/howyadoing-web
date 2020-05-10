@@ -12,10 +12,10 @@ class App extends Component {
     };
   }
   
-  setLoggedInUser = (user) => {
+  setLoggedInUser = (session) => {
     this.setState((oldState) => ({
         ...oldState,
-        loggedInUser: user
+        loggedInUser: session
     }))
   }
 
@@ -24,7 +24,7 @@ class App extends Component {
       return <Login setLoggedInUser={this.setLoggedInUser} />;
     } 
 
-    return <MainApp setLoggedInUser={this.setLoggedInUser} />
+    return <MainApp setLoggedInUser={this.setLoggedInUser} token={this.state.loggedInUser.token} />
   }
 }
 

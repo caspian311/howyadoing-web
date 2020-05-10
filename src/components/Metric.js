@@ -15,7 +15,7 @@ class Metric extends Component {
                 <Link to="/AddMetric" className="link link-color">Record Today's Weight >></Link>
             </p>
             
-            <Graph />
+            <Graph token={this.props.token} />
         </div>);
     }
 }

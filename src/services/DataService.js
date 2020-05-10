@@ -3,10 +3,10 @@ import axios from 'axios'
 import config from './config'
 
 class DataService {
-    fetchData() {
+    fetchData(token) {
         const url = `${config.baseUrl}/api/data`;
         
-        return axios.get(url)
+        return axios.get(url, { headers: { Authorization: token} })
             .then((data) => {
                 const dateFormatter = new Intl.DateTimeFormat('en', { month: '2-digit', day: '2-digit' })
 
@@ -26,10 +26,10 @@ class DataService {
             })
     }
 
-    addValue(newValue) {
+    addValue(newValue, token) {
         const url = `${config.baseUrl}/api/data`
 
-        return axios.post(url, {value: newValue})
+        return axios.post(url, {value: newValue}, { headers: { Authorization: token} })
     }
 }
 
