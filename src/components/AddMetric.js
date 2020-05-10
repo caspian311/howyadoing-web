@@ -19,7 +19,7 @@ class AddMetric extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        new DataService().addValue(this.state.newValue)
+        new DataService().addValue(this.state.newValue, this.props.token)
             .then(() => {
                 this.setState(() => ({ submitted: true }));
             })
