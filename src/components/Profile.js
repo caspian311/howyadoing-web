@@ -21,7 +21,7 @@ class Profile extends Component {
 
     async componentDidMount() {
         try {
-            let data = await new ProfileService().fetchProfile()
+            let data = await new ProfileService().fetchProfile(this.props.token)
             this.setState((state) => ({
                 ...state,
                 name: data.name,
@@ -42,7 +42,7 @@ class Profile extends Component {
                 name: this.state.name, 
                 email: this.state.email, 
                 goal: this.state.goal
-            })
+            }, this.props.token)
             this.setState(() => ({ submitted: true }))
         } catch(e) {
             console.log("Error: ", e)
