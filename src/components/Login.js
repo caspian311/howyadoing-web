@@ -19,19 +19,19 @@ class Login extends Component {
         };
       }
 
-    doLogin = (e) => {
+    doLogin = async (e) => {
         e.preventDefault()
 
-        new SessionService().createSession(this.state.email, this.state.password)
-            .then((userSession) => {
-                this.props.setLoggedInUser(userSession)
-            })
-            .catch((err) => {
-                this.setState((oldState) => ({
-                    ...oldState,
-                    error: err.response.data.message
-                }))
-            })
+        try {
+            let userSession = await new SessionService().createSession(this.state.email, this.state.password)
+            this.props.setLoggedInUser(userSession.token)
+        } catch(err) {
+            console.log("Error: ", err)
+            this.setState((oldState) => ({
+                ...oldState,
+                error: err.response.data.message
+            }))
+        }
     }
 
     updateField = (field, value) => {
