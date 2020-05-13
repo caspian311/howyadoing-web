@@ -17,15 +17,18 @@ class AddMetric extends Component {
         };
       }
 
-    onSubmit = (event) => {
+    onSubmit = async (event) => {
         event.preventDefault();
-        new DataService().addValue(this.state.newValue, this.props.token)
-            .then(() => {
-                this.setState(() => ({ submitted: true }));
-            })
-            .catch((e) => {
-                console.log('something went wrong', e)
-            })
+
+        try {
+            await new DataService().addValue(this.state.newValue, this.props.token)
+            this.setState(() => ({ submitted: true }));
+        } catch (err) {
+            console.log("Error: ", err)
+            if (err.response && err.response.status === 401) {
+                this.props.setLoggedInUser()
+            }
+        }
     }
 
     onValueChanged = (event) => {
@@ -39,7 +42,7 @@ class AddMetric extends Component {
 
     render() {
         if (this.state.submitted === true) {
-        return <Redirect to='/' />
+            return <Redirect to='/' />
         }
 
         return (<div className="AddMetric">

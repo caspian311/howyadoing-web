@@ -28,8 +28,11 @@ class Profile extends Component {
                 email: data.email,
                 goal: data.goal
             }))
-        } catch(e) {
-            console.log("Error: ", e)
+        } catch(err) {
+            console.log("Error: ", err)
+            if (err.response && err.response.status === 401) {
+                this.props.setLoggedInUser()
+            }
         }
     }
 
@@ -44,8 +47,11 @@ class Profile extends Component {
                 goal: this.state.goal
             }, this.props.token)
             this.setState(() => ({ submitted: true }))
-        } catch(e) {
-            console.log("Error: ", e)
+        } catch(err) {
+            console.log("Error: ", err)
+            if (err.response && err.response.status === 401) {
+                this.props.setLoggedInUser()
+            }
         }
     }
 

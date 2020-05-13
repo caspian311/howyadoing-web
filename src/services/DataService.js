@@ -21,9 +21,6 @@ class DataService {
                     };
                 })
             })
-            .catch((error) => {
-                console.log('error: ', error)
-            })
     }
 
     addValue(newValue, token) {

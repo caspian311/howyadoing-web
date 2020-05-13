@@ -17,8 +17,15 @@ class Metric extends Component {
       }
     
     async componentDidMount() {
-        let data = await new DataService().fetchData(this.props.token)
-        this.setState(() => ({ data }))
+        try {
+            let data = await new DataService().fetchData(this.props.token)
+            this.setState(() => ({ data }))    
+        } catch(err) {
+            console.log("Error: ", err)
+            if (err.response && err.response.status === 401) {
+                this.props.setLoggedInUser()
+            }
+        }
     }
 
     render() {

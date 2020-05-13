@@ -38,13 +38,13 @@ class MainApp extends Component {
             <SideNav isOpen={this.state.isOpen} toggleMenu={this.toggleMenu} setLoggedInUser={this.props.setLoggedInUser} />
             <Switch>
               <Route path="/AddMetric">
-                <AddMetric token={this.props.token} />
+                <AddMetric token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
               </Route>
               <Route path="/Profile">
-                <Profile token={this.props.token} />
+                <Profile token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
               </Route>
               <Route path="/">
-                <Metric token={this.props.token} />
+                <Metric token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
               </Route>
             </Switch>
           </Router>
