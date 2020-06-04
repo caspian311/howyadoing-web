@@ -19,7 +19,7 @@ class Metric extends Component {
     async componentDidMount() {
         try {
             let data = await new DataService().fetchData(this.props.token)
-            this.setState(() => ({ data }))    
+            this.setState(() => ({ data }))
         } catch(err) {
             console.log("Error: ", err)
             if (err.response && err.response.status === 401) {

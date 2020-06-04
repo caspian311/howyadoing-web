@@ -5,7 +5,7 @@ import './Graph.css';
 
 function Graph(props)  {
     return (      
-        <ResponsiveContainer width="100%" aspect={4.0/3.0}>
+        <ResponsiveContainer width="90%" aspect={4.0/3.0}>
             <LineChart
                 data={props.data}
                 margin={{

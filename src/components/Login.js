@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 import './Login.css';
 import './colors.css';
@@ -68,6 +69,8 @@ class Login extends Component {
                 </fieldset>
 
                 <input type="submit" className="terciary-background" onClick={this.doLogin} value="Login" />
+
+                Need an account? <Link to="/register" className="link link-color" >Register here</Link>
             </form>
                         
             <Footer />
