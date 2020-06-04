@@ -17,7 +17,8 @@ class Register extends Component {
             email: '',
             password: '',
             goal: '',
-            isReadyToSubmit: false
+            isReadyToSubmit: false,
+            submitted: false
         }
     }
     
@@ -52,9 +53,6 @@ class Register extends Component {
             this.setState(() => ({ submitted: true }))
         } catch(err) {
             console.log("Error: ", err)
-            if (err.response && err.response.status === 401) {
-                this.props.setLoggedInUser()
-            }
         }
     }
 
