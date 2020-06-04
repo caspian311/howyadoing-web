@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect, Link } from "react-router-dom";
 
 import ProfileService from '../services/ProfileService';
+import Field from './Field';
 
 import "./Profile.css";
 import './colors.css';
@@ -61,26 +62,14 @@ class Profile extends Component {
             newState.goal > 0;;
     }
 
-    updateField = (field, value) => {
+    onChange = (fieldState) => {
         let newState = this.state
-        newState[field] =  value
-        
-        this.setState(() => ({ 
+        newState[fieldState.name] = fieldState.value
+
+        this.setState(() => ({
             ...newState, 
             isReadyToSubmit: this.validate(newState)
         }))
-    }
-
-    onGoalChanged = (e) => {
-        this.updateField('goal', e.target.value)
-    }
-
-    onEmailChanged = (e) => {
-        this.updateField('email', e.target.value)
-    }
-
-    onNameChanged = (e) => {
-        this.updateField('name', e.target.value)
     }
 
     render() {
@@ -89,16 +78,13 @@ class Profile extends Component {
         }
 
         return (<div className="Profile">
-            <h2 className="secondary-background">Goals</h2>
+            <h2 className="secondary-background">Profile</h2>
             
             <form onSubmit={this.onSubmit}>
                 <fieldset>
-                    <label htmlFor="goal">Name</label>
-                    <input id="name" type="text" name="name" onChange={this.onNameChanged} value={this.state.name} />
-                    <label htmlFor="email">Email</label>
-                    <input id="email" type="text" name="email" onChange={this.onEmailChanged} value={this.state.email} />
-                    <label htmlFor="goal">Profile</label>
-                    <input id="goal" type="number" name="goal" onChange={this.onGoalChanged} value={this.state.goal} />
+                    <Field name="name" displayName="Name" value={this.state.name} onChange={this.onChange} />
+                    <Field name="email" displayName="Email" value={this.state.email} onChange={this.onChange} />
+                    <Field name="goal" displayName="Goal" value={this.state.goal} onChange={this.onChange} type="number" />
                     <input type="submit" value="Update" className="terciary-background" disabled={this.state.isReadyToSubmit ? '' : 'disabled'} />
                 </fieldset>
             </form>
@@ -110,4 +96,4 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+export default Profile

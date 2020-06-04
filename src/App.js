@@ -51,6 +51,6 @@ class App extends Component {
 
     return <MainApp setLoggedInUser={this.setLoggedInUser} token={this.state.loggedInUser} />
   }
-}
+} 
 
 export default App;
