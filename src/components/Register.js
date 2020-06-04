@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { Link } from "react-router-dom"
 
-import Header from './Header.js';
-import Footer from './Footer.js';
-
+import Header from './Header'
+import Footer from './Footer'
+import Field from './Field'
 
 import './Register.css';
 
@@ -12,24 +12,28 @@ class Register extends Component {
         super(props);
     
         this.state = {
-        };
-      }
+            name: '',
+            email: '',
+            password: '',
+            goal: ''
+        }
+    }
     
-    render() {
+    onChange = (newFieldState) => {
+
+    }
+
+    render() {  
         return (
-        <div className="Registation">
+        <div className="Register">
             <Header />
             <h2 className="secondary-background">Register</h2>
             <form>
                 <fieldset>
-                    <label htmlFor="email">Email</label>
-                    <input type="text" id="email" name="email" />
-
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" />
-
-                    <label htmlFor="goal">Goal</label>
-                    <input type="number" id="goal" name="goal" />
+                    <Field name="name" value={this.state.name} onChange={this.onChange} />
+                    <Field name="email" value={this.state.email} onChange={this.onChange} />
+                    <Field name="password" value={this.state.password} onChange={this.onChange} type="password" />
+                    <Field name="goal" value={this.state.goal} onChange={this.onChange} type="number" />
                 </fieldset>
 
                 <Link to="/">Cancel</Link>
@@ -39,5 +43,4 @@ class Register extends Component {
     }
 }
 
-export default Register;
-    
+export default Register
