@@ -82,9 +82,9 @@ class Profile extends Component {
             
             <form onSubmit={this.onSubmit}>
                 <fieldset>
-                    <Field name="name" displayName="Name" value={this.state.name} onChange={this.onChange} />
-                    <Field name="email" displayName="Email" value={this.state.email} onChange={this.onChange} />
-                    <Field name="goal" displayName="Goal" value={this.state.goal} onChange={this.onChange} type="number" />
+                    <Field name="name" value={this.state.name} onChange={this.onChange} />
+                    <Field name="email" value={this.state.email} onChange={this.onChange} />
+                    <Field name="goal" value={this.state.goal} onChange={this.onChange} type="number" />
                     <input type="submit" value="Update" className="terciary-background" disabled={this.state.isReadyToSubmit ? '' : 'disabled'} />
                 </fieldset>
             </form>

@@ -30,10 +30,14 @@ class Field extends Component {
         })
     }
 
+    upperCaseFirstLetter = (s) => {
+        return s.charAt(0).toUpperCase() + s.slice(1)
+    }
+
     render() {
         return (
             <div>
-                <label htmlFor={this.props.name}>{this.props.displayName}</label>
+                <label htmlFor={this.props.name}>{this.props.displayName || this.upperCaseFirstLetter(this.props.name)}</label>
                 <input id={this.props.name} 
                     type={this.props.type || "text"} 
                     name={this.props.name} 
