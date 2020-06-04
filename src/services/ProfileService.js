@@ -3,17 +3,19 @@ import axios from 'axios'
 import config from './config'
 
 class ProfileService {
-    fetchProfile(token) {
-        const url = `${config.baseUrl}/api/profile`;
+    #url = `${config.baseUrl}/api/profile`;
 
-        return axios.get(url, { headers: { Authorization: token } })
+    fetchProfile(token) {
+        return axios.get(this.#url, { headers: { Authorization: token } })
             .then((data) => ( data.data ))
     }
 
     updateProfile(profile, token) {
-        const url = `${config.baseUrl}/api/profile`;
+        return axios.put(this.#url, profile, { headers: { Authorization: token } })
+    }
 
-        return axios.post(url, profile, { headers: { Authorization: token } })
+    createProfile(profile) {
+        return axios.post(this.#url, profile)
     }
 }
 

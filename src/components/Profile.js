@@ -59,7 +59,7 @@ class Profile extends Component {
     validate = (newState) => {
         return newState.name.length > 0 &&
             newState.email.length > 0 &&
-            newState.goal > 0;;
+            newState.goal > 0
     }
 
     onChange = (fieldState) => {
@@ -73,9 +73,7 @@ class Profile extends Component {
     }
 
     render() {
-        if (this.state.submitted === true) {
-            return <Redirect to='/' />
-        }
+        if (this.state.submitted) return <Redirect to='/' />
 
         return (<div className="Profile">
             <h2 className="secondary-background">Profile</h2>
