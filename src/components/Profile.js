@@ -71,6 +71,7 @@ class Profile extends Component {
             <Form fields={ fields } 
                 onValidate={ this.validate }
                 onSubmit={ this.onSubmit }
+                submitButtonText="Update Profile"
             />
 
             <Link to="/" className="link link-color">Cancel</Link>

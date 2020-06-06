@@ -55,7 +55,8 @@ class Register extends Component {
             <Form 
                 fields={ fields } 
                 onSubmit={ this.submitAction } 
-                onValidate={ this.validate } />
+                onValidate={ this.validate }
+                submitButtonText="Create Account" />
 
             <Link to="/" className="link link-color">Cancel</Link>
             

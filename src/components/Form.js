@@ -70,7 +70,10 @@ class Form extends Component {
                             name={field.name} value={field.value} type={field.type}
                             onChange={this.onChange} />
                     }) }
-                    <input type="submit" value="Update" className="terciary-background" disabled={this.state.isReadyToSubmit ? '' : 'disabled'} />
+                    <input type="submit" 
+                        value={this.props.submitButtonText || "Submit"} 
+                        className="terciary-background" 
+                        disabled={this.state.isReadyToSubmit ? '' : 'disabled'} />
                 </fieldset>
             </form>)
     }

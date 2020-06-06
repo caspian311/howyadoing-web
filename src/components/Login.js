@@ -7,6 +7,7 @@ import './colors.css'
 import Header from './Header'
 import Footer from './Footer'
 import ErrorMessage from './ErrorMessage'
+import Form from './Form'
 
 import SessionService from '../services/SessionService'
 
@@ -15,20 +16,16 @@ class Login extends Component {
         super(props)
     
         this.state = {
-            email: '',
-            password: '',
             error: null
         }
       }
 
-    doLogin = async (e) => {
-        e.preventDefault()
-
+    submitAction = async (formData) => {
         try {
-            let userSession = await new SessionService().createSession(this.state.email, this.state.password)
+            let userSession = await new SessionService()
+                .createSession(formData.email, formData.password)
             this.props.setLoggedInUser(userSession.token)
         } catch(err) {
-            console.log("Error: ", err)
             this.setState((oldState) => ({
                 ...oldState,
                 error: err.response.data.message
@@ -36,23 +33,11 @@ class Login extends Component {
         }
     }
 
-    updateField = (field, value) => {
-        let newState = this.state
-        newState[field] =  value
-        
-        this.setState(() => ({ 
-            ...newState, 
-        }))
+    validate = (formData) => {
+        return formData.email.length > 0 &&
+            formData.password.length > 0
     }
 
-    onEmailChanged = (e) => {
-        this.updateField('email', e.target.value)
-    }
-
-    onPasswordChanged = (e) => {
-        this.updateField('password', e.target.value)
-    }
-  
     render() {
       return (<div className="Login">
             <Header />
@@ -60,19 +45,17 @@ class Login extends Component {
             
             { this.state.error ? <ErrorMessage message={this.state.error} /> : '' }
             
-            <form>
-                <fieldset>
-                    <label htmlFor="email">Email</label>
-                    <input type="text" id="email" name="email" onChange={this.onEmailChanged} value={this.state.email} />
+            <Form fields={ [
+                    { name: "email", value: "" }, 
+                    { name: "password", value: "", type: "password" }
+                ] }
+                onValidate={ this.validate }
+                submitButtonText="Login"
+                onSubmit={ this.submitAction } />
 
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" onChange={this.onPasswordChanged} value={this.state.password} />
-                </fieldset>
-
-                <input type="submit" className="terciary-background" onClick={this.doLogin} value="Login" />
-
+            <p>
                 Need an account? <Link to="/register" className="link link-color" >Register here</Link>
-            </form>
+            </p>
                         
             <Footer />
         </div>)
