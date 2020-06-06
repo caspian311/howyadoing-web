@@ -5,22 +5,31 @@ import ProfileService from '../services/ProfileService'
 import Header from './Header'
 import Footer from './Footer'
 import Form from './Form'
+import ErrorMessage from './ErrorMessage'
 
-import './Register.css';
+import './Register.css'
 
 class Register extends Component {
     constructor(props) {
         super(props);
     
         this.state = {
-            submitted: false
+            submitted: false,
+            error: null
         };
     }
 
     submitAction = async (formData) => {
         try {
-            await new ProfileService().createProfile(formData, this.props.token)
-            this.setState(() => ({ submitted: true }))
+            await new ProfileService()
+                .createProfile(formData, this.props.token)
+                .then(() => {
+                    this.setState(() => ({ submitted: true }))
+                })
+                .catch((error) => {
+                    this.setState(() => ({ error: error.response.data.message}))
+                })
+            
         } catch(err) {
             console.log("Error: ", err)
         }
@@ -47,6 +56,8 @@ class Register extends Component {
         <div className="Register">
             <Header />
             <h2 className="secondary-background">Register</h2>
+
+            { this.state.error ? <ErrorMessage message={this.state.error} /> : '' }
 
             <Form 
                 fields={ fields } 

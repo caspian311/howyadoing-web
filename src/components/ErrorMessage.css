@@ -1,0 +1,10 @@
+
+.error {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.error span {
+    font-weight: bold;
+    color: #a00;
+}

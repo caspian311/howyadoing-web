@@ -1,23 +1,24 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { Link } from "react-router-dom"
 
-import './Login.css';
-import './colors.css';
+import './Login.css'
+import './colors.css'
 
-import Header from './Header';
-import Footer from './Footer';
+import Header from './Header'
+import Footer from './Footer'
+import ErrorMessage from './ErrorMessage'
 
-import SessionService from '../services/SessionService';
+import SessionService from '../services/SessionService'
 
 class Login extends Component {
     constructor(props) {
-        super(props);
+        super(props)
     
         this.state = {
             email: '',
             password: '',
             error: null
-        };
+        }
       }
 
     doLogin = async (e) => {
@@ -74,18 +75,9 @@ class Login extends Component {
             </form>
                         
             <Footer />
-        </div>);
+        </div>)
     }
-  }
+}
   
-  function ErrorMessage(props) {
-      return (
-            <div className="error">
-                <span>Error:</span>
-                {props.message}
-            </div>
-      );
-  }
-  
-  export default Login;
+export default Login
   

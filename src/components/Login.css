@@ -40,13 +40,3 @@
 .Login fieldset {
     border: none;
 }
-
-.Login .error {
-    text-align: center;
-    padding-top: 10px;
-}
-
-.Login .error span {
-    font-weight: bold;
-    color: #a00;
-}
