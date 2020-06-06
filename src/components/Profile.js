@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect, Link } from "react-router-dom";
 
 import ProfileService from '../services/ProfileService';
-import Field from './Field';
+import Form from './Form';
 
 import "./Profile.css";
 import './colors.css';
@@ -16,9 +16,8 @@ class Profile extends Component {
             email: '',
             goal: '',
             submitted: false,
-            isReadyToSubmit: false
         };
-      }
+    }
 
     async componentDidMount() {
         try {
@@ -37,16 +36,9 @@ class Profile extends Component {
         }
     }
 
-    onSubmit = async (e) => {
-        e.preventDefault()
-        this.setState((state) => ({ ...state, isReadyToSubmit: false }))
-
+    onSubmit = async (formData) => {
         try {
-            await new ProfileService().updateProfile({
-                name: this.state.name, 
-                email: this.state.email, 
-                goal: this.state.goal
-            }, this.props.token)
+            await new ProfileService().updateProfile(formData, this.props.token)
             this.setState(() => ({ submitted: true }))
         } catch(err) {
             console.log("Error: ", err)
@@ -56,40 +48,32 @@ class Profile extends Component {
         }
     }
 
-    validate = (newState) => {
-        return newState.name.length > 0 &&
-            newState.email.length > 0 &&
-            newState.goal > 0
-    }
+    validate = (formData) => {
+        console.log('validating: ', formData)
 
-    onChange = (fieldState) => {
-        let newState = this.state
-        newState[fieldState.name] = fieldState.value
-
-        this.setState(() => ({
-            ...newState, 
-            isReadyToSubmit: this.validate(newState)
-        }))
+        return formData.name.length > 0 &&
+            formData.email.length > 0 &&
+            formData.goal > 0
     }
 
     render() {
         if (this.state.submitted) return <Redirect to='/' />
+        
+        let fields = [
+            { name: "name", value: this.state.name, type: "text"},
+            { name: "email", value: this.state.email, type: "text"},
+            { name: "goal", value: this.state.goal, type: "number"},
+        ]
 
         return (<div className="Profile">
             <h2 className="secondary-background">Profile</h2>
             
-            <form onSubmit={this.onSubmit}>
-                <fieldset>
-                    <Field name="name" value={this.state.name} onChange={this.onChange} />
-                    <Field name="email" value={this.state.email} onChange={this.onChange} />
-                    <Field name="goal" value={this.state.goal} onChange={this.onChange} type="number" />
-                    <input type="submit" value="Update" className="terciary-background" disabled={this.state.isReadyToSubmit ? '' : 'disabled'} />
-                </fieldset>
-            </form>
+            <Form fields={ fields } 
+                onValidate={ this.validate }
+                onSubmit={ this.onSubmit }
+            />
 
-            <p>
-                <Link to="/" className="link link-color">Cancel</Link>
-            </p>
+            <Link to="/" className="link link-color">Cancel</Link>
         </div>);
     }
 }

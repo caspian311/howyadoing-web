@@ -4,7 +4,7 @@ import { Link, Redirect } from "react-router-dom"
 import ProfileService from '../services/ProfileService'
 import Header from './Header'
 import Footer from './Footer'
-import Field from './Field'
+import Form from './Form'
 
 import './Register.css';
 
@@ -13,67 +13,48 @@ class Register extends Component {
         super(props);
     
         this.state = {
-            name: '',
-            email: '',
-            password: '',
-            goal: '',
-            isReadyToSubmit: false,
             submitted: false
-        }
-    }
-    
-    validate = (newState) => {
-        return newState.name.length > 0 &&
-            newState.password.length > 0 &&
-            newState.email.length > 0 &&
-            newState.goal > 0
+        };
     }
 
-    onChange = (fieldState) => {
-        let newState = this.state
-        newState[fieldState.name] = fieldState.value
-
-        this.setState(() => ({
-            ...newState, 
-            isReadyToSubmit: this.validate(newState)
-        }))
-    }
-    
-    onSubmit = async (e) => {
-        e.preventDefault()
-        this.setState((state) => ({ ...state, isReadyToSubmit: false }))
-
+    submitAction = async (formData) => {
         try {
-            await new ProfileService().createProfile({
-                name: this.state.name, 
-                email: this.state.email, 
-                password: this.state.password,
-                goal: this.state.goal
-            }, this.props.token)
+            await new ProfileService().createProfile(formData, this.props.token)
             this.setState(() => ({ submitted: true }))
         } catch(err) {
             console.log("Error: ", err)
         }
     }
 
+    validate = (formData) => {
+        return formData.name.length > 0 &&
+            formData.email.length > 0 &&
+            formData.password.length > 0 &&
+            formData.goal > 0
+    }
+
     render() {
         if (this.state.submitted) return <Redirect to='/' />
+
+        let fields = [
+            { name: "name", value: "", type: "text"},
+            { name: "email", value: "", type: "text"},
+            { name: "password", value: "", type: "password"},
+            { name: "goal", value: "", type: "number"},
+        ]
 
         return (
         <div className="Register">
             <Header />
             <h2 className="secondary-background">Register</h2>
-            <form onSubmit={this.onSubmit}>
-                <fieldset>
-                    <Field name="name" value={this.state.name} onChange={this.onChange} />
-                    <Field name="email" value={this.state.email} onChange={this.onChange} />
-                    <Field name="password" value={this.state.password} onChange={this.onChange} type="password" />
-                    <Field name="goal" value={this.state.goal} onChange={this.onChange} type="number" />
-                    <input type="submit" value="Create Account" className="terciary-background" disabled={this.state.isReadyToSubmit ? '' : 'disabled'} />
-                </fieldset>
 
-                <Link to="/">Cancel</Link>
-            </form>
+            <Form 
+                fields={ fields } 
+                onSubmit={ this.submitAction } 
+                onValidate={ this.validate } />
+
+            <Link to="/" className="link link-color">Cancel</Link>
+            
             <Footer />
         </div>)
     }
