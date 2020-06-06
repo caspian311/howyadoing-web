@@ -21,17 +21,10 @@ class Register extends Component {
 
     submitAction = async (formData) => {
         try {
-            await new ProfileService()
-                .createProfile(formData, this.props.token)
-                .then(() => {
-                    this.setState(() => ({ submitted: true }))
-                })
-                .catch((error) => {
-                    this.setState(() => ({ error: error.response.data.message}))
-                })
-            
+            await new ProfileService().createProfile(formData, this.props.token)
+            this.setState(() => ({ submitted: true }))
         } catch(err) {
-            console.log("Error: ", err)
+            this.setState(() => ({ error: err.response.data.message}))
         }
     }
 
