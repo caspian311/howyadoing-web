@@ -16,7 +16,7 @@ class DataService {
 
                     return {
                         name: formattedDate,
-                        weight: datum.value,
+                        value: datum.value,
                         goal: datum.goal
                     };
                 })
