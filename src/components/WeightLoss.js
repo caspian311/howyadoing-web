@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import Graph from './Graph.js';
 import DataService from '../services/DataService'
 
-import "./Metric.css";
+import "./WeightLoss.css";
 import './colors.css';
 
-class Metric extends Component {
+class WeightLoss extends Component {
     constructor(props) {
         super(props);
     
@@ -29,7 +29,7 @@ class Metric extends Component {
     }
 
     render() {
-        return (<div className="Metric">
+        return (<div className="WeightLoss">
             <h2 className="secondary-background">Weight Loss</h2>
             
             <p>
@@ -41,5 +41,5 @@ class Metric extends Component {
     }
 }
 
-export default Metric;
+export default WeightLoss;
     

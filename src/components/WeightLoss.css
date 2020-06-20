@@ -1,19 +1,19 @@
-.Metric h2 {
+.WeightLoss h2 {
     margin: 0;
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.Metric {
+.WeightLoss {
     margin-top: 0;
 }
 
-.Metric a {
+.WeightLoss a {
     float: right;
     margin-right: 10px;
 }
 
-.Metric p {
+.WeightLoss p {
     margin: 10px;
 }

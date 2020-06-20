@@ -5,7 +5,7 @@ import './colors.css';
 
 import Header from './Header.js';
 import SideNav from './SideNav.js';
-import Metric from './Metric.js';
+import WeightLoss from './WeightLoss.js';
 import Profile from './Profile.js';
 import AddMetric from './AddMetric.js';
 import Footer from './Footer.js';
@@ -44,7 +44,7 @@ class MainApp extends Component {
                 <Profile token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
               </Route>
               <Route path="/">
-                <Metric token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
+                <WeightLoss token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
               </Route>
             </Switch>
           </Router>
