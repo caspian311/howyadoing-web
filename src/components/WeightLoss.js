@@ -18,7 +18,7 @@ class WeightLoss extends Component {
     
     async componentDidMount() {
         try {
-            let data = await new DataService().fetchData(this.props.token)
+            let data = await new DataService().fetchWeightLossData(this.props.token)
             this.setState(() => ({ data }))
         } catch(err) {
             console.log("Error: ", err)

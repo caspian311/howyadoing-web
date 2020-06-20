@@ -3,7 +3,7 @@ import axios from 'axios'
 import config from './config'
 
 class DataService {
-    fetchData(token) {
+    fetchWeightLossData(token) {
         const url = `${config.baseUrl}/api/data`;
         
         return axios.get(url, { headers: { Authorization: token} })
