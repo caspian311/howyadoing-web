@@ -1,0 +1,19 @@
+.Metrics h2 {
+    margin: 0;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.Metrics {
+    margin-top: 0;
+}
+
+.Metrics h2 {
+    font-size: 16pt;
+}
+
+.Metrics li {
+    margin: 10px;
+    list-style-type: none;
+}

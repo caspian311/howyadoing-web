@@ -1,0 +1,19 @@
+.WorkingOut h2 {
+    margin: 0;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.WorkingOut {
+    margin-top: 0;
+}
+
+.WorkingOut a {
+    float: right;
+    margin-right: 10px;
+}
+
+.WorkingOut p {
+    margin: 10px;
+}

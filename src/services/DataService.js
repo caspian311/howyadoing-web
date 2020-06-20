@@ -23,6 +23,10 @@ class DataService {
             })
     }
 
+    fetchWorkingOutData() {
+        return new Promise((res) => { res([]) })
+    }
+
     addValue(newValue, token) {
         const url = `${config.baseUrl}/api/data`
 

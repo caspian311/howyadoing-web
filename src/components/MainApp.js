@@ -8,6 +8,8 @@ import SideNav from './SideNav.js';
 import WeightLoss from './WeightLoss.js';
 import Profile from './Profile.js';
 import AddMetric from './AddMetric.js';
+import Metrics from './Metrics.js';
+import WorkingOut from './WorkingOut.js';
 import Footer from './Footer.js';
 
 import {
@@ -43,8 +45,14 @@ class MainApp extends Component {
               <Route path="/Profile">
                 <Profile token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
               </Route>
-              <Route path="/">
+              <Route path="/WeightLoss">
                 <WeightLoss token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
+              </Route>
+              <Route path="/WorkingOut">
+                <WorkingOut token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
+              </Route>
+              <Route path="/">
+                <Metrics token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
               </Route>
             </Switch>
           </Router>
