@@ -13,9 +13,9 @@ import WorkingOut from './WorkingOut.js';
 import Footer from './Footer.js';
 
 import {
-    BrowserRouter as Router,
+    BrowserRouter,
     Switch,
-    Route
+    Route,
   } from "react-router-dom";
 
 class MainApp extends Component {
@@ -36,26 +36,36 @@ class MainApp extends Component {
     render() {
       return (<div className="App">
           <Header isOpen={this.state.isOpen} toggleMenu={this.toggleMenu} showMenu={true}/>
-          <Router>
+          <BrowserRouter>
             <SideNav isOpen={this.state.isOpen} toggleMenu={this.toggleMenu} setLoggedInUser={this.props.setLoggedInUser} />
             <Switch>
-              <Route path="/AddMetric">
-                <AddMetric token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
-              </Route>
-              <Route path="/Profile">
-                <Profile token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
-              </Route>
-              <Route path="/WeightLoss">
-                <WeightLoss token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
-              </Route>
-              <Route path="/WorkingOut">
-                <WorkingOut token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
-              </Route>
-              <Route path="/">
-                <Metrics token={this.props.token} setLoggedInUser={this.props.setLoggedInUser} />
-              </Route>
+              <Route path="/AddMetric" component={(props) => 
+                <AddMetric 
+                  token={this.props.token}
+                  setLoggedInUser={this.props.setLoggedInUser} 
+                  history={props.history} /> } />
+              <Route path="/Profile" component={(props) => 
+                <Profile 
+                  token={this.props.token}
+                  setLoggedInUser={this.props.setLoggedInUser} 
+                  history={props.history} /> } />
+              <Route path="/WeightLoss" component={(props) => 
+                <WeightLoss 
+                  token={this.props.token}
+                  setLoggedInUser={this.props.setLoggedInUser} 
+                  history={props.history} /> } />
+              <Route path="/WorkingOut" component={(props) => 
+                <WorkingOut 
+                  token={this.props.token} 
+                  setLoggedInUser={this.props.setLoggedInUser} 
+                  history={props.history} /> } />
+              <Route path="/" component={(props) => 
+                <Metrics 
+                  token={this.props.token} 
+                  setLoggedInUser={this.props.setLoggedInUser} 
+                  history={props.history} /> } />
             </Switch>
-          </Router>
+          </BrowserRouter>
           
           <Footer />
         </div>);

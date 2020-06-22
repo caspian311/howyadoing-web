@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 
 import "./Metrics.css";
 import './colors.css';
@@ -11,18 +10,30 @@ class Metrics extends Component {
         this.state = {
           data: []
         };
-      }
+    }
+
+    goToWorkingOut = (e) => {
+        e.preventDefault()
+
+        this.props.history.push('/WorkingOut')
+    }
     
+    goToWeightLoss = (e) => {
+        e.preventDefault()
+
+        this.props.history.push('/WeightLoss')
+    }
+
     render() {
         return (<div className="Metrics">
             <h2 className="secondary-background">Here's what you're working on...</h2>
             
             <ul>
                 <li>
-                    <Link to="/WeightLoss" className="link link-color">Weight Loss Goal</Link>
+                    <a href="/WeightLoss" className="link link-color" onClick={this.goToWeightLoss}>Weight Loss Goals</a>
                 </li>
                 <li>
-                    <Link to="/WorkingOut" className="link link-color">Working Out</Link>
+                    <a href="/WorkingOut" className="link link-color" onClick={this.goToWorkingOut}>Working Out Goals</a>
                 </li>
             </ul>
         </div>);

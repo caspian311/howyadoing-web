@@ -9,8 +9,11 @@
     margin-top: 0;
 }
 
-.WeightLoss a {
+.right {
     float: right;
+}
+
+.WeightLoss a {
     margin-right: 10px;
 }
 

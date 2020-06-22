@@ -9,8 +9,11 @@
     margin-top: 0;
 }
 
-.WorkingOut a {
+.right {
     float: right;
+}
+
+.WorkingOut a {
     margin-right: 10px;
 }
 

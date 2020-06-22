@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from "react-router-dom";
 
 import DataService from '../services/DataService';
 
@@ -11,20 +10,21 @@ class AddMetric extends Component {
         super(props);
     
         this.state = {
-          submitted: false,
           newValue: undefined,
           isReadyToSubmit: false
         };
       }
 
     onSubmit = async (event) => {
-        event.preventDefault();
+        event.preventDefault()
 
         try {
             await new DataService().addValue(this.state.newValue, this.props.token)
-            this.setState(() => ({ submitted: true }));
+
+            this.goBack()
         } catch (err) {
             console.log("Error: ", err)
+
             if (err.response && err.response.status === 401) {
                 this.props.setLoggedInUser()
             }
@@ -40,22 +40,26 @@ class AddMetric extends Component {
          }));
     }
 
-    render() {
-        if (this.state.submitted === true) {
-            return <Redirect to='/' />
-        }
+    goBack = (e) => {
+        if (e) e.preventDefault()
 
+        this.props.history.goBack()
+    }
+
+    render() {
         return (<div className="AddMetric">
             <h2 className="secondary-background">Add a new metric</h2>
+
+            <p>
+                <a href="/" className="link link-color" onClick={this.goBack}>&lt;&lt; Back</a>
+            </p>
 
             <form onSubmit={this.onSubmit}>
                 <input type="number" name="value" onChange={this.onValueChanged} />
                 <input type="submit" value="Add" className="terciary-background" disabled={this.state.isReadyToSubmit ? '' : 'disabled'} />
             </form>
 
-            <p>
-                <Link to="/" className="link link-color">Cancel</Link>
-            </p>
+
         </div>);
     }
 }

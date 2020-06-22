@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 
 import Graph from './Graph.js';
 import DataService from '../services/DataService'
@@ -35,7 +34,8 @@ class WorkingOut extends Component {
             <h2 className="secondary-background">Working Out</h2>
             
             <p>
-                <Link to="/AddMetric" className="link link-color">Record for today >></Link>
+                <a href="/AddMetric" className="link link-color right" onClick={this.goToAddMetric}>Today's Workout &gt;&gt;</a>
+                <a href="/Back" className="link link-color" onClick={this.goBack}>&lt;&lt; Back</a>
             </p>
             
             <Graph data={this.state.data} />
