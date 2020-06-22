@@ -39,7 +39,7 @@ class WeightLoss extends Component {
             
             <p>
                 <a href="/AddMetric" className="link link-color right" onClick={this.goToAddMetric}>Today's Weight &gt;&gt;</a>
-                <a href="/Back" className="link link-color" onClick={this.goBack}>&lt;&lt; Back</a>
+                <a href="/" className="link link-color" onClick={this.goBack}>&lt;&lt; Back</a>
             </p>
             
             <Graph data={this.state.data} />
